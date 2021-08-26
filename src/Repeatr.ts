@@ -69,7 +69,7 @@ class Repeatr {
     this.count();
 
     // invokes the functions again based on the mode of repetition
-    // for finite tasks, repates the functions
+    // for finite tasks, repeats the functions
     // if the call counter is less than requested iteration
     if (this.hasOwnProperty("iteration") && this.counter >= this.iteration) {
       // terminates the function and returns the current object
