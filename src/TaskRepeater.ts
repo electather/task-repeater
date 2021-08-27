@@ -1,43 +1,43 @@
-class Repeatr {
+class TaskRepeater {
   /**
    * the counter for repetitive calls
    *
-   * @memberof Repeatr
+   * @memberof TaskRepeater
    */
   private counter = 0;
 
   /**
    * the list of functions to be invoked
    *
-   * @memberof Repeatr
+   * @memberof TaskRepeater
    */
   private fn: ((...args: unknown[]) => unknown)[] = [];
 
   /**
    * number of iterations
    *
-   * @memberof Repeatr
+   * @memberof TaskRepeater
    */
   iteration = 1;
 
   /**
    * period in milliseconds
    *
-   * @memberof Repeatr
+   * @memberof TaskRepeater
    */
   period = 0;
 
   /**
    * timeout instance
    *
-   * @memberof Repeatr
+   * @memberof TaskRepeater
    */
   timeout: NodeJS.Timeout | null = null;
 
   /**
    * delay time in milliseconds for initial call
    *
-   * @memberof Repeatr
+   * @memberof TaskRepeater
    */
   delayTime = 0;
 
@@ -60,7 +60,7 @@ class Repeatr {
       invoked = true;
     }
 
-    // terminates the handler and returns the Repeatr object
+    // terminates the handler and returns the TaskRepeater object
     // if none of the given functions in the list is invocable
     if (!invoked) {
       return this;
@@ -92,7 +92,7 @@ class Repeatr {
   /**
    * resets counter
    *
-   * @memberof Repeatr
+   * @memberof TaskRepeater
    */
   reset() {
     this.counter = 0;
@@ -103,7 +103,7 @@ class Repeatr {
   /**
    * sets a delay time for initial call
    *
-   * @memberof Repeatr
+   * @memberof TaskRepeater
    */
   delay(delayTime: number) {
     if (typeof delayTime === "number") {
@@ -116,7 +116,7 @@ class Repeatr {
   /**
    * adds the function to the list of functions for the current instance
    *
-   * @memberof Repeatr
+   * @memberof TaskRepeater
    */
   do(fn: (...args: unknown[]) => unknown) {
     // checks if the given function is valid
@@ -132,7 +132,7 @@ class Repeatr {
   /**
    * sets the number of calls
    *
-   * @memberof Repeatr
+   * @memberof TaskRepeater
    */
   for(num: number) {
     if (typeof num === "number" && num > 0) {
@@ -145,7 +145,7 @@ class Repeatr {
   /**
    * sets the interval time in X milliseconds
    *
-   * @memberof Repeatr
+   * @memberof TaskRepeater
    */
   every(ms: number) {
     if (typeof ms === "number") {
@@ -156,9 +156,9 @@ class Repeatr {
   }
 
   /**
-   * runs the repeatr with handlers
+   * runs the TaskRepeater with handlers
    *
-   * @memberof Repeatr
+   * @memberof TaskRepeater
    */
   start() {
     // calls the handler after delayTime for initial load
@@ -171,7 +171,7 @@ class Repeatr {
   /**
    * stops the job/calling the function
    *
-   * @memberof Repeatr
+   * @memberof TaskRepeater
    */
   stop() {
     if(this.timeout) {
@@ -183,4 +183,4 @@ class Repeatr {
 }
 
 // eslint-disable-next-line import/prefer-default-export
-export const initialize = ():Repeatr => new Repeatr();
+export const initialize = ():TaskRepeater => new TaskRepeater();
