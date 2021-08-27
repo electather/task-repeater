@@ -51,6 +51,10 @@ job1.reset(); // resets the counter as if it isn't invoked
 * Github: [@electather](https://github.com/electather)
 * LinkedIn: [@omid-astaraki](https://linkedin.com/in/omid-astaraki)
 
+## Credits 
+
+this package is based on [Repeatr](https://github.com/theshem/Repeatr) library developed by [@theshem](https://github.com/theshem).
+
 ## 🤝 Contributing
 
 Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/electather/task-repeater/issues). You can also take a look at the [contributing guide](https://github.com/electather/task-repeater/blob/master/CONTRIBUTING.md).
