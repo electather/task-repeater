@@ -1,3 +1,1 @@
-import { initialize } from "./Repeatr";
-
-export default initialize;
+export {initialize as default} from './Repeatr';
