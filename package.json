@@ -1,6 +1,6 @@
 {
   "name": "task-repeater",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A micro JavaScript library for running repetitive time-based tasks",
   "main": "./dist/index.js",
   "scripts": {

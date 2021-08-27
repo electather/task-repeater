@@ -1,3 +1,5 @@
+## [1.0.2](https://github.com/electather/task-repeater/compare/1.0.1...1.0.2) (2021-08-27)
+
 ## 1.0.1 (2021-08-27)
 
 
