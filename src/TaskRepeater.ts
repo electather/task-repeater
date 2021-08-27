@@ -1,7 +1,10 @@
+import { noop } from './misc/utils';
+
 class TaskRepeater {
   /**
    * the counter for repetitive calls
    *
+   * @private
    * @memberof TaskRepeater
    */
   private counter = 0;
@@ -9,37 +12,50 @@ class TaskRepeater {
   /**
    * the list of functions to be invoked
    *
+   * @private
    * @memberof TaskRepeater
    */
-  private fn: ((...args: unknown[]) => unknown)[] = [];
+  private fn: (() => unknown)[] = [];
+
+  /**
+   * cleanup function
+   *
+   * @private
+   * @memberof TaskRepeater
+   */
+  private cleanupFn = noop;
 
   /**
    * number of iterations
    *
+   * @private
    * @memberof TaskRepeater
    */
-  iteration = 1;
+  private iteration = 1;
 
   /**
    * period in milliseconds
    *
+   * @private
    * @memberof TaskRepeater
    */
-  period = 0;
+  private period = 0;
 
   /**
    * timeout instance
    *
+   * @private
    * @memberof TaskRepeater
    */
-  timeout: NodeJS.Timeout | null = null;
+  private timeout: NodeJS.Timeout | null = null;
 
   /**
    * delay time in milliseconds for initial call
    *
+   * @private
    * @memberof TaskRepeater
    */
-  delayTime = 0;
+  private delayTime = 0;
 
   // eslint-disable-next-line consistent-return
   private handler() {
@@ -48,11 +64,11 @@ class TaskRepeater {
     let invoked = false;
 
     // invokes the given functions, in order
-    for (let i = 0, {length} = this.fn; i < length; i += 1) {
+    for (let i = 0, { length } = this.fn; i < length; i += 1) {
       // checks if the current function is valid
       // otherwise, ignore it
-      if (typeof this.fn[i] !== "function") {
-        throw new Error('not a function')
+      if (typeof this.fn[i] !== 'function') {
+        throw new Error('not a function');
       }
 
       this.fn[i].call(this);
@@ -72,9 +88,10 @@ class TaskRepeater {
     // invokes the functions again based on the mode of repetition
     // for finite tasks, repeats the functions
     // if the call counter is less than requested iteration
-    
-    if (Object.prototype.hasOwnProperty.call(this, "iteration") && this.counter >= this.iteration) {
+
+    if (Object.prototype.hasOwnProperty.call(this, 'iteration') && this.counter >= this.iteration) {
       // terminates the function and returns the current object
+      this.cleanupFn();
       return this;
     }
 
@@ -82,10 +99,29 @@ class TaskRepeater {
     this.timeout = setTimeout(this.handler.bind(this), this.period);
   }
 
-  // counts the iterations
+  /**
+   * counts the iterations
+   *
+   * @memberof TaskRepeater
+   */
   count() {
     this.counter += 1;
     // return the current object
+    return this;
+  }
+
+  /**
+   * adds a cleanup function to be called at the end of the runtime
+   *
+   * @memberof TaskRepeater
+   */
+  finally(fn: () => unknown) {
+    if (typeof fn !== 'function') {
+      throw new Error('Invalid argument: fn is not a function');
+    }
+    // appends the function to the list and set the fn property.
+    this.cleanupFn = fn;
+    // returns the current object
     return this;
   }
 
@@ -106,7 +142,7 @@ class TaskRepeater {
    * @memberof TaskRepeater
    */
   delay(delayTime: number) {
-    if (typeof delayTime === "number") {
+    if (typeof delayTime === 'number') {
       this.delayTime = delayTime;
     }
     // returns the current object
@@ -118,10 +154,10 @@ class TaskRepeater {
    *
    * @memberof TaskRepeater
    */
-  do(fn: (...args: unknown[]) => unknown) {
+  do(fn: () => unknown) {
     // checks if the given function is valid
-    if (typeof fn !== "function") {
-      throw new Error("Invalid argument: fn is not a function");
+    if (typeof fn !== 'function') {
+      throw new Error('Invalid argument: fn is not a function');
     }
     // appends the function to the list and set the fn property.
     this.fn = this.fn.concat(fn);
@@ -135,7 +171,7 @@ class TaskRepeater {
    * @memberof TaskRepeater
    */
   for(num: number) {
-    if (typeof num === "number" && num > 0) {
+    if (typeof num === 'number' && num > 0) {
       this.iteration = num;
     }
     // returns the current object
@@ -148,7 +184,7 @@ class TaskRepeater {
    * @memberof TaskRepeater
    */
   every(ms: number) {
-    if (typeof ms === "number") {
+    if (typeof ms === 'number') {
       this.period = ms;
     }
     // returns the current object
@@ -174,8 +210,8 @@ class TaskRepeater {
    * @memberof TaskRepeater
    */
   stop() {
-    if(this.timeout) {
-      clearTimeout(this.timeout)
+    if (this.timeout) {
+      clearTimeout(this.timeout);
     }
     // return the current object
     return this;
@@ -183,4 +219,4 @@ class TaskRepeater {
 }
 
 // eslint-disable-next-line import/prefer-default-export
-export const initialize = ():TaskRepeater => new TaskRepeater();
+export const initialize = (): TaskRepeater => new TaskRepeater();
