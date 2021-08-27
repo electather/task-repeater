@@ -32,7 +32,7 @@ class Repeatr {
    *
    * @memberof Repeatr
    */
-  timeout: number | null = null;
+  timeout: NodeJS.Timeout | null = null;
 
   /**
    * delay time in milliseconds for initial call
