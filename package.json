@@ -1,6 +1,6 @@
 {
   "name": "task-repeater",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A micro JavaScript library for running repetitive time-based tasks",
   "main": "./dist/index.js",
   "scripts": {
@@ -26,7 +26,7 @@
   ],
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
-  },  
+  },
   "author": "Omid Astaraki <omid.ocean@gmail.com>",
   "license": "MIT",
   "bugs": {
