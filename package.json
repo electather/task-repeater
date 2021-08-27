@@ -10,14 +10,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/electather/Repeatr-ts.git"
+    "url": "git+https://github.com/electather/task-repeater.git"
   },
   "keywords": [
     "Repeat",
     "Repetitive",
     "Timed",
     "Timer",
-    "Timeout"
+    "Timeout",
+    "repetitive-tasks"
   ],
   "files": [
     "dist",
@@ -30,9 +31,9 @@
   "author": "Omid Astaraki <omid.ocean@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/electather/Repeatr-ts/issues"
+    "url": "https://github.com/electather/task-repeater/issues"
   },
-  "homepage": "https://github.com/electather/Repeatr-ts#readme",
+  "homepage": "https://github.com/electather/task-repeater#readme",
   "devDependencies": {
     "@release-it/conventional-changelog": "^3.3.0",
     "release-it": "^14.11.5",
