@@ -1,9 +1,10 @@
 {
-  "name": "repeatr-ts",
+  "name": "task-repeater",
   "version": "1.0.0",
   "description": "A micro JavaScript library for running repetitive time-based tasks",
-  "main": "dist/Repeatr.js",
+  "main": "./dist/index.js",
   "scripts": {
+    "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -17,10 +18,18 @@
     "Timer",
     "Timeout"
   ],
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md"
+  ],
   "author": "Omid Astaraki <omid.ocean@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/electather/Repeatr-ts/issues"
   },
-  "homepage": "https://github.com/electather/Repeatr-ts#readme"
+  "homepage": "https://github.com/electather/Repeatr-ts#readme",
+  "devDependencies": {
+    "typescript": "^4.4.2"
+  }
 }
