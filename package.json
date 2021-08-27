@@ -24,6 +24,9 @@
     "LICENSE",
     "README.md"
   ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },  
   "author": "Omid Astaraki <omid.ocean@gmail.com>",
   "license": "MIT",
   "bugs": {
