@@ -11,7 +11,7 @@ class Repeatr {
    *
    * @memberof Repeatr
    */
-  private fn: ((...args: any) => any)[] = [];
+  private fn: ((...args: unknown[]) => unknown)[] = [];
 
   /**
    * number of iterations
@@ -41,17 +41,18 @@ class Repeatr {
    */
   delayTime = 0;
 
+  // eslint-disable-next-line consistent-return
   private handler() {
     // internal variable to check if
     // function list contains invocable objects
     let invoked = false;
 
     // invokes the given functions, in order
-    for (let i = 0, length = this.fn.length; i < length; i++) {
+    for (let i = 0, {length} = this.fn; i < length; i += 1) {
       // checks if the current function is valid
       // otherwise, ignore it
       if (typeof this.fn[i] !== "function") {
-        continue;
+        throw new Error('not a function')
       }
 
       this.fn[i].call(this);
@@ -71,7 +72,8 @@ class Repeatr {
     // invokes the functions again based on the mode of repetition
     // for finite tasks, repeats the functions
     // if the call counter is less than requested iteration
-    if (this.hasOwnProperty("iteration") && this.counter >= this.iteration) {
+    
+    if (Object.prototype.hasOwnProperty.call(this, "iteration") && this.counter >= this.iteration) {
       // terminates the function and returns the current object
       return this;
     }
@@ -116,7 +118,7 @@ class Repeatr {
    *
    * @memberof Repeatr
    */
-  do(fn: (...args: any) => any) {
+  do(fn: (...args: unknown[]) => unknown) {
     // checks if the given function is valid
     if (typeof fn !== "function") {
       throw new Error("Invalid argument: fn is not a function");
@@ -172,10 +174,13 @@ class Repeatr {
    * @memberof Repeatr
    */
   stop() {
-    this.timeout && clearTimeout(this.timeout);
+    if(this.timeout) {
+      clearTimeout(this.timeout)
+    }
     // return the current object
     return this;
   }
 }
 
-export const initialize = () => new Repeatr();
+// eslint-disable-next-line import/prefer-default-export
+export const initialize = ():Repeatr => new Repeatr();
