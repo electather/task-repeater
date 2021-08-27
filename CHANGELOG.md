@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/electather/task-repeater/compare/1.0.2...1.1.0) (2021-08-27)
+
+
+### Features
+
+* added finally method to the class ([85ceea3](https://github.com/electather/task-repeater/commit/85ceea3165fd51e513494578895b07e80d4ad3f2))
+
 ## [1.0.2](https://github.com/electather/task-repeater/compare/1.0.1...1.0.2) (2021-08-27)
 
 ## 1.0.1 (2021-08-27)
