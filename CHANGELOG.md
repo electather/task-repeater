@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/electather/task-repeater/compare/1.1.0...1.2.0) (2021-08-28)
+
+
+### Features
+
+* added an optional property to the accepted functions ([3bb02ba](https://github.com/electather/task-repeater/commit/3bb02baba08593802f028ed8b97fbe763e443943))
+
 # [1.1.0](https://github.com/electather/task-repeater/compare/1.0.2...1.1.0) (2021-08-27)
 
 
