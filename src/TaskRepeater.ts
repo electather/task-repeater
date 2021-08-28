@@ -24,7 +24,7 @@ class TaskRepeater {
    * @private
    * @memberof TaskRepeater
    */
-  private cleanupFn = noop;
+  private cleanupFn: AcceptedFn = noop;
 
   /**
    * number of iterations
@@ -72,7 +72,7 @@ class TaskRepeater {
         throw new Error('not a function');
       }
 
-      this.fn[i].call(this);
+      this.fn[i].call(this, this.counter);
       // sets the invocation state
       invoked = true;
     }
@@ -92,7 +92,7 @@ class TaskRepeater {
 
     if (Object.prototype.hasOwnProperty.call(this, 'iteration') && this.counter >= this.iteration) {
       // terminates the function and returns the current object
-      this.cleanupFn();
+      this.cleanupFn(this.counter);
       return this;
     }
 
@@ -105,14 +105,14 @@ class TaskRepeater {
    *
    * @memberof TaskRepeater
    */
-  count() {
+  private count() {
     this.counter += 1;
     // return the current object
     return this;
   }
 
   /**
-   * adds a cleanup function to be called at the end of the runtime
+   * adds a cleanup function to be called at the end of the runtime. the functions accepts a parameter which contains number of itterations done.
    *
    * @memberof TaskRepeater
    */
