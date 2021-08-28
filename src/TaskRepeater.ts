@@ -1,3 +1,4 @@
+import { AcceptedFn } from './misc/types';
 import { noop } from './misc/utils';
 
 class TaskRepeater {
@@ -15,7 +16,7 @@ class TaskRepeater {
    * @private
    * @memberof TaskRepeater
    */
-  private fn: (() => unknown)[] = [];
+  private fn: AcceptedFn[] = [];
 
   /**
    * cleanup function
@@ -115,7 +116,7 @@ class TaskRepeater {
    *
    * @memberof TaskRepeater
    */
-  finally(fn: () => unknown) {
+  finally(fn: AcceptedFn) {
     if (typeof fn !== 'function') {
       throw new Error('Invalid argument: fn is not a function');
     }
@@ -154,7 +155,7 @@ class TaskRepeater {
    *
    * @memberof TaskRepeater
    */
-  do(fn: () => unknown) {
+  do(fn: AcceptedFn) {
     // checks if the given function is valid
     if (typeof fn !== 'function') {
       throw new Error('Invalid argument: fn is not a function');
