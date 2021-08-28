@@ -3,6 +3,7 @@
   "version": "1.2.0",
   "description": "A micro JavaScript library for running repetitive time-based tasks",
   "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1",
