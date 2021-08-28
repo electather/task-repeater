@@ -12,9 +12,12 @@
   <a href="https://github.com/electather/task-repeater/blob/master/LICENSE" target="_blank">
     <img alt="License: MIT" src="https://img.shields.io/github/license/electather/task-repeater" />
   </a>
+  <a href="https://bundlephobia.com/package/task-repeater" target="_blank">
+    <img alt="License: MIT" src="https://img.shields.io/bundlephobia/minzip/task-repeater" />
+  </a>
 </p>
 
-> A Javascript library created to help manage repeated tasks
+A tiny [(657B Gzipped)](https://bundlephobia.com/package/task-repeater) micro library to manage repeated tasks with ease.
 
 ## Install
 
