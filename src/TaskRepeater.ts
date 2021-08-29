@@ -32,7 +32,7 @@ class TaskRepeater {
    * @private
    * @memberof TaskRepeater
    */
-  private iteration = 1;
+  private iteration: number | null = null;
 
   /**
    * period in milliseconds
@@ -90,7 +90,7 @@ class TaskRepeater {
     // for finite tasks, repeats the functions
     // if the call counter is less than requested iteration
 
-    if (Object.prototype.hasOwnProperty.call(this, 'iteration') && this.counter >= this.iteration) {
+    if (Object.prototype.hasOwnProperty.call(this, 'iteration') && this.iteration && this.counter >= this.iteration) {
       // terminates the function and returns the current object
       this.cleanupFn(this.counter);
       return this;
