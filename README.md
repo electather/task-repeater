@@ -36,8 +36,9 @@ const job1 = TaskRepeater()
                 .start();
 
 const job2 = TaskRepeater()
+                .do((itteration) => console.log(`itteration No.${itteration} ...`))
                 .do(() => { /*...*/ })
-                .do(() => { /*...*/ })
+                .finally((itterationsDone) => console.log(`tasks done. ${itterationsDone} itterations were completed.`))
                 .for(5) // times
                 .every(2_000) // interval in miliseconds 
                 .delay(1_000) // initial delay in miliseconds
