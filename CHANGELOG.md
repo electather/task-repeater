@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/electather/task-repeater/compare/1.2.1...1.3.0) (2021-08-29)
+
+
+### Features
+
+* repeat the task indefinitely if the itteration is not defined ([0134c3b](https://github.com/electather/task-repeater/commit/0134c3b326c07e1da8a5495b5c5f8018d6252150))
+
 ## [1.2.1](https://github.com/electather/task-repeater/compare/1.2.0...1.2.1) (2021-08-28)
 
 # [1.2.0](https://github.com/electather/task-repeater/compare/1.1.0...1.2.0) (2021-08-28)
